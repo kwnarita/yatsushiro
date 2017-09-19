@@ -1,0 +1,14 @@
+applications:
+- name: yatsushiro
+  host: yatsushiro
+  domain: mybluemix.net
+  path: .
+  buildpack: sdk-for-nodejs
+  instances: 1
+  memory: 64M
+  disk_quota: 1024M
+  env:
+    BASICAUTH_ENV: prod
+    DBNAME_ENV: webdocs
+  services:
+  - Cloudant-Yatsushiro

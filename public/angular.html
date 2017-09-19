@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja" ng-app="kwnngapp">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>サイトのタイトル</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/css/bootstrap.min.css"></link>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.10/angular.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+	<script>
+    	var ngApp = angular.module('kwnngapp', []);
+    	
+    	ngApp.controller('kwnControl', function($scope){
+      								$scope.namePrimary = 'Wesley';
+    							});
+	</script>
+</head>
+<body ng-controller="kwnControl">
+	<header>ヘッダー</header>
+	<input type="text" ng-model="namePrimary" />
+	<h1>{{namePrimary}}</h1>
+	<footer>フッター</footer>
+</body>
+</html>
+

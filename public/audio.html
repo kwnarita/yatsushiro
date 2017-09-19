@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>サイトのタイトル</title>
+	<!-- BootstrapのCSS読み込み -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- jQuery読み込み -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- BootstrapのJS読み込み -->
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <!-- オーディオ処理のスクリプト -->
+	<script type="text/javascript">
+
+	function gotStream(stream)
+	{
+		// MediaStreamAudioSourceNode 生成
+		var context = new AudioContext();
+
+		// ローカルコンピュータのマイクから来るオーディオストリームに紐付いた
+		//	MediaStreamAudioSourceNodeを生成
+		var source = context.createMediaStreamSource(stream);
+
+		// https://github.com/mattdiamond/Recorderjs を使用
+		var rec = new Recorder(source);
+}
+
+	function setInf()
+	{
+		navigator.getUserMedia = ( navigator.getUserMedia ||
+		                       navigator.webkitGetUserMedia ||
+		                       navigator.mozGetUserMedia ||
+		                       navigator.msGetUserMedia);
+
+		if (navigator.getUserMedia) {
+		   navigator.getUserMedia (
+		      {video: false, audio: true},      // constraints
+
+		      // successCallback
+		      gotStream,
+
+		      // errorCallback
+		      function(err) 
+					{
+		         console.log("The following error occured: " + err);
+		      }
+		   );
+		} else {
+		   console.log("getUserMedia not supported");
+		}
+	}
+  </script>
+</head>
+<body>
+	<header>オーディオ処理サンプルアプリ</header>
+  <form action="#" name="form1"><div class="form-group">
+		<button type="button" class="btn btn-success" onclick="setInf();">get audio stream</button>
+	</div></form>
+	<footer>K.W.Narita, 30-jun-2016</footer>
+</body>
+</html>
+
